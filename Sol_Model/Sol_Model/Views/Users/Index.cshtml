@@ -1,0 +1,83 @@
+﻿@model Sol_Model.ViewModel.Users.UsersViewModel
+@*@model IEnumerable<Sol_Model.Models.Users.UserCommunicationModel>
+*@
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Model Demo</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <label> First Name</label>
+            <br />
+            <h3>@Model?.Users?.FirstName</h3>
+        </div>
+        <div>
+            <label> First Name</label>
+            <br />
+            <h3>@Model?.Users?.LastName</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <label> Mobile No</label>
+            <br />
+            <h3>@Model?.Users?.UserCommunication?.MobileNo</h3>
+        </div>
+        <div>
+            <label> First Name</label>
+            <br />
+            <h3>@Model?.Users?.UserCommunication?.EmailId</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <label>List of Mobile No</label>
+            @if (Model?.Users?.ListUserCommunication?.Count() >= 1)
+            {
+                <ul>
+                    @foreach (var userCommunicationModel in Model?.Users?.ListUserCommunication)
+                    {
+                        <li>@userCommunicationModel?.MobileNo</li>
+                    }
+                </ul>
+            }
+        </div>
+        <div class="col-4">
+            <label>List of Email Id</label>
+            @if (Model?.Users?.ListUserCommunication?.Count() >= 1)
+            {
+                <ul>
+                    @foreach (var userCommunicationModel in Model?.Users?.ListUserCommunication)
+                    {
+                        <li>@userCommunicationModel?.EmailId</li>
+                    }
+                </ul>
+            }
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <label>List of Address</label>
+            <br />
+            @if (Model?.Users?.ListUserAddress?.Count() >= 1)
+            {
+                <ul>
+                    @foreach (var userAddressModel in Model?.Users?.ListUserAddress)
+                    {
+                        <li>@userAddressModel?.Address</li>
+                    }
+                </ul>
+            }
+        </div>
+    </div>
+</div>
+
+@if (Model?.HideShowDiv == true)
+{
+    <div id="divObj">
+        Hello Razor
+    </div>
+}
